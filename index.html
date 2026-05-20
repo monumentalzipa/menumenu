@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menú Monumental</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/1.39.1/iconfont/tabler-icons.min.css">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&display=swap');
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  background:#0a0a0a;
+  font-family:'Barlow',sans-serif;
+}
+
+.menu-wrap{
+  background:#0d0d0d;
+  color:#f0f0f0;
+  min-height:100vh;
+  padding-bottom:3rem;
+}
+
+/* HEADER */
+
+.header{
+  background:#111;
+  padding:1.2rem 1rem 1rem;
+  text-align:center;
+  border-bottom:2px solid #c8a84b;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.logo-area{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+}
+
+.logo-img{
+  width:120px;
+  height:120px;
+  object-fit:contain;
+}
+
+.bar-title{
+  font-family:'Bebas Neue',cursive;
+  font-size:2.2rem;
+  color:#c8a84b;
+  letter-spacing:3px;
+  line-height:0.9;
+}
+
+.bar-title.small{
+  font-size:1.7rem;
+}
+
+.bar-sub{
+  font-size:0.72rem;
+  letter-spacing:2px;
+  color:#999;
+  margin-top:4px;
+}
+
+/* SEARCH */
+
+.search-wrap{
+  padding:1rem;
+  background:#111;
+}
+
+.search-container{
+  position:relative;
+}
+
+.search-icon{
+  position:absolute;
+  left:1rem;
+  top:50%;
+  transform:translateY(-50%);
+  color:#777;
+  font-size:17px;
+}
+
+.search-box{
+  width:100%;
+  background:#1a1a1a;
+  border:1px solid #333;
+  border-radius:12px;
+  padding:0.85rem 1rem 0.85rem 2.8rem;
+  color:#f0f0f0;
+  font-size:14px;
+  outline:none;
+}
+
+.search-box::placeholder{
+  color:#777;
+}
+
+/* CATEGORIES */
+
+.cats{
+  display:flex;
+  gap:8px;
+  padding:0 1rem 1rem;
+  overflow-x:auto;
+  scrollbar-width:none;
+  background:#111;
+}
+
+.cats::-webkit-scrollbar{
+  display:none;
+}
+
+.cat-btn{
+  flex-shrink:0;
+  padding:8px 14px;
+  border-radius:30px;
+  border:1px solid #333;
+  background:#1a1a1a;
+  color:#aaa;
+  font-size:12px;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.25s;
+  white-space:nowrap;
+}
+
+.cat-btn.active{
+  background:#c8a84b;
+  border-color:#c8a84b;
+  color:#0d0d0d;
+}
+
+/* SECTIONS */
+
+.section{
+  padding:0 1rem;
+  margin-top:1.4rem;
+}
+
+.section-title{
+  font-family:'Bebas Neue',cursive;
+  font-size:1.5rem;
+  color:#c8a84b;
+  letter-spacing:2px;
+  margin-bottom:0.8rem;
+  padding-bottom:0.5rem;
+  border-bottom:1px solid #2a2a2a;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+/* ITEMS */
+
+.item{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+  padding:12px 0;
+  border-bottom:1px solid #1f1f1f;
+}
+
+.item:last-child{
+  border-bottom:none;
+}
+
+.item-name{
+  font-size:14px;
+  font-weight:600;
+  color:#f1f1f1;
+}
+
+.item-desc{
+  font-size:11px;
+  color:#8d8d8d;
+  margin-top:4px;
+  line-height:1.4;
+}
+
+.item-price{
+  font-family:'Bebas Neue',cursive;
+  font-size:1.2rem;
+  color:#c8a84b;
+  letter-spacing:1px;
+  white-space:nowrap;
+}
+
+/* BADGES */
+
+.badge{
+  display:inline-block;
+  font-size:9px;
+  background:#c8a84b22;
+  color:#c8a84b;
+  border:1px solid #c8a84b55;
+  padding:2px 7px;
+  border-radius:20px;
+  margin-left:6px;
+  font-weight:700;
+  letter-spacing:0.5px;
+  vertical-align:middle;
+}
+
+/* EMPTY */
+
+.empty{
+  text-align:center;
+  color:#666;
+  padding:3rem 1rem;
+  font-size:14px;
+}
+
+/* MOBILE */
+
+@media (max-width:768px){
+
+  .logo-img{
+    width:105px;
+    height:105px;
+  }
+
+  .item-name{
+    font-size:15px;
+  }
+
+  .item-price{
+    font-size:1.3rem;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="menu-wrap">
+
+  <!-- HEADER -->
+
+  <div class="header">
+
+    <div class="logo-area">
+
+      <img
+        src="logo.png"
+        alt="Logo"
+        class="logo-img"
+      >
+
+      <div>
+        <div class="bar-title">Menú</div>
+        <div class="bar-title small">Monumental</div>
+        <div class="bar-sub">FÚTBOL · CERVEZA · AMIGOS</div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- SEARCH -->
+
+  <div class="search-wrap">
+
+    <div class="search-container">
+
+      <i class="ti ti-search search-icon"></i>
+
+      <input
+        class="search-box"
+        type="text"
+        id="search"
+        placeholder="Buscar bebida..."
+        oninput="filterItems()"
+      >
+
+    </div>
+
+  </div>
+
+  <!-- CATEGORIES -->
+
+  <div class="cats">
+
+    <button class="cat-btn active" onclick="setCategory('todas', this)">⚽ Todas</button>
+    <button class="cat-btn" onclick="setCategory('cervezas', this)">🍺 Cervezas</button>
+    <button class="cat-btn" onclick="setCategory('guaro', this)">🥃 Guaro</button>
+    <button class="cat-btn" onclick="setCategory('titular', this)">🏆 La Titular</button>
+    <button class="cat-btn" onclick="setCategory('casa', this)">🍹 De la Casa</button>
+    <button class="cat-btn" onclick="setCategory('shots', this)">🔥 Shots</button>
+    <button class="cat-btn" onclick="setCategory('sin', this)">🥤 Sin Alcohol</button>
+
+  </div>
+
+  <!-- MENU -->
+
+  <div id="menu-body">
+
+    <!-- CERVEZAS -->
+
+    <div class="section" data-section="cervezas">
+
+      <div class="section-title">
+        <i class="ti ti-beer"></i>
+        Liga Cervecera
+      </div>
+
+      <div class="item"><div><div class="item-name">Andina</div></div><div class="item-price">$3.000</div></div>
+      <div class="item"><div><div class="item-name">Andina Light</div></div><div class="item-price">$3.000</div></div>
+      <div class="item"><div><div class="item-name">Jirafa</div></div><div class="item-price">$28.000</div></div>
+      <div class="item"><div><div class="item-name">Águila</div></div><div class="item-price">$4.000</div></div>
+      <div class="item"><div><div class="item-name">Águila Light</div></div><div class="item-price">$4.000</div></div>
+      <div class="item"><div><div class="item-name">Poker</div></div><div class="item-price">$4.000</div></div>
+<div class="item">
+  <div>
+    <div class="item-name">Costeña Bacana</div>
+  </div>
+  <div class="item-price">$4.000</div>
+</div>
+      <div class="item"><div><div class="item-name">Heineken</div></div><div class="item-price">$4.000</div></div>
+      <div class="item"><div><div class="item-name">Budweiser</div></div><div class="item-price">$4.000</div></div>
+      <div class="item"><div><div class="item-name">Jirafa</div></div><div class="item-price">$38.000</div></div>
+      <div class="item"><div><div class="item-name">Club Colombia</div></div><div class="item-price">$5.000</div></div>
+ <div class="item"><div><div class="item-name">Redds Verde / Rosada</div></div><div class="item-price">$5.000</div></div>
+      <div class="item"><div><div class="item-name">Coronita</div></div><div class="item-price">$5.000</div></div>
+      <div class="item"><div><div class="item-name">Jirafa</div></div><div class="item-price">$48.000</div></div>
+      <div class="item"><div><div class="item-name">Corona</div></div><div class="item-price">$8.000</div></div>
+      <div class="item"><div><div class="item-name">Stella Artois</div></div><div class="item-price">$8.000</div></div>
+      <div class="item"><div><div class="item-name">Tres Cordilleras</div></div><div class="item-price">$8.000</div></div>
+      <div class="item"><div><div class="item-name">Jirafa</div></div><div class="item-price">$77.000</div></div>
+
+    </div>
+
+    <!-- GUARO -->
+
+    <div class="section" data-section="guaro">
+
+      <div class="section-title">
+        <i class="ti ti-bottle"></i>
+        Guaro
+      </div>
+
+      <div class="item"><div><div class="item-name">Amarillo Botella</div></div><div class="item-price">$90.000</div></div>
+      <div class="item"><div><div class="item-name">Amarillo ½</div></div><div class="item-price">$50.000</div></div>
+      <div class="item"><div><div class="item-name">Antioqueño Verde Botella</div></div><div class="item-price">$80.000</div></div>
+      <div class="item"><div><div class="item-name">Antioqueño Verde ½</div></div><div class="item-price">$45.000</div></div>
+      <div class="item"><div><div class="item-name">Antioqueño Azul ½</div></div><div class="item-price">$50.000</div></div>
+
+    </div>
+
+    <!-- TITULAR -->
+
+    <div class="section" data-section="titular">
+
+      <div class="section-title">
+        <i class="ti ti-trophy"></i>
+        La Titular
+      </div>
+
+      <div class="item"><div><div class="item-name">Jose Cuervo</div></div><div class="item-price">$140.000</div></div>
+      <div class="item"><div><div class="item-name">Olmeca</div></div><div class="item-price">$140.000</div></div>
+      <div class="item"><div><div class="item-name">Ron Botella</div></div><div class="item-price">$90.000</div></div>
+      <div class="item"><div><div class="item-name">Ron ½</div></div><div class="item-price">$50.000</div></div>
+      <div class="item"><div><div class="item-name">Buchanas 12 años</div></div><div class="item-price">$200.000</div></div>
+      <div class="item"><div><div class="item-name">Buchanas 12 años ½</div></div><div class="item-price">$130.000</div></div>
+      <div class="item"><div><div class="item-name">Buchanas Master</div></div><div class="item-price">$250.000</div></div>
+
+    </div>
+
+    <!-- CASA -->
+
+    <div class="section" data-section="casa">
+
+      <div class="section-title">
+        <i class="ti ti-star"></i>
+        De la Casa
+      </div>
+
+      <div class="item">
+        <div>
+          <div class="item-name">Tarjeta Amarilla</div>
+          <div class="item-desc">Coronita + Tequila</div>
+        </div>
+        <div class="item-price">$15.000</div>
+      </div>
+
+      <div class="item">
+        <div>
+          <div class="item-name">Tarjeta Roja</div>
+          <div class="item-desc">Coronita + Tequila + Granadina</div>
+        </div>
+        <div class="item-price">$15.000</div>
+      </div>
+
+      <div class="item">
+        <div>
+          <div class="item-name">Monumental Azul</div>
+          <div class="item-desc">Club Colombia Dorada + Ron</div>
+        </div>
+        <div class="item-price">$15.000</div>
+      </div>
+
+      <div class="item">
+        <div>
+          <div class="item-name">Monumental Roja</div>
+          <div class="item-desc">Club Colombia Roja + Amaretto</div>
+        </div>
+        <div class="item-price">$15.000</div>
+      </div>
+
+      <div class="item">
+        <div>
+          <div class="item-name">Monumental</div>
+          <div class="item-desc">Tres Cordilleras Rosada + Tequila + Limón</div>
+        </div>
+        <div class="item-price">$15.000</div>
+      </div>
+
+    </div>
+
+    <!-- SHOTS -->
+
+    <div class="section" data-section="shots">
+
+      <div class="section-title">
+        <i class="ti ti-flame"></i>
+        Shots Off Side
+      </div>
+
+      <div class="item"><div><div class="item-name">Jack Daniel's</div></div><div class="item-price">$8.000 / $14.000</div></div>
+      <div class="item"><div><div class="item-name">Ron</div></div><div class="item-price">$6.000 / $10.000</div></div>
+      <div class="item"><div><div class="item-name">Crema de Whiskey</div></div><div class="item-price">$10.000</div></div>
+      <div class="item"><div><div class="item-name">Crema de Ron</div></div><div class="item-price">$8.000</div></div>
+
+    </div>
+
+    <!-- SIN ALCOHOL -->
+
+    <div class="section" data-section="sin">
+
+      <div class="section-title">
+        <i class="ti ti-droplet"></i>
+        Sin Alcohol
+      </div>
+
+      <div class="item"><div><div class="item-name">Coca Cola</div></div><div class="item-price">$4.000</div></div>
+      <div class="item"><div><div class="item-name">Agua en Botella</div></div><div class="item-price">$3.000</div></div>
+      <div class="item"><div><div class="item-name">Bretaña</div></div><div class="item-price">$4.000</div></div>
+
+      <div class="item">
+        <div>
+          <div class="item-name">Soda Frutos Amarillos<span class="badge">Nuevo</span></div>
+          <div class="item-desc">Frutos amarillos + syrup + bubols</div>
+        </div>
+        <div class="item-price">$12.000</div>
+      </div>
+
+      <div class="item">
+        <div>
+          <div class="item-name">Soda Cerezas y Limón<span class="badge">Nuevo</span></div>
+          <div class="item-desc">Syrup + cerezas + limón</div>
+        </div>
+        <div class="item-price">$12.000</div>
+      </div>
+
+    </div>
+
+    <!-- EMPTY -->
+
+    <div id="no-results" class="empty" style="display:none">
+      No encontramos esa bebida 😅
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+let activeCategory = 'todas';
+
+function setCategory(category, button){
+
+  activeCategory = category;
+
+  document.querySelectorAll('.cat-btn').forEach(btn=>{
+    btn.classList.remove('active');
+  });
+
+  button.classList.add('active');
+
+  filterItems();
+}
+
+function filterItems(){
+
+  const query = document.getElementById('search').value.toLowerCase().trim();
+
+  let visibleCount = 0;
+
+  document.querySelectorAll('.section').forEach(section=>{
+
+    const sectionCategory = section.dataset.section;
+
+    const categoryMatch =
+      activeCategory === 'todas'
+      || activeCategory === sectionCategory;
+
+    let sectionHasVisibleItems = false;
+
+    section.querySelectorAll('.item').forEach(item=>{
+
+      const text = item.textContent.toLowerCase();
+
+      const searchMatch =
+        query === '' || text.includes(query);
+
+      const show = categoryMatch && searchMatch;
+
+      item.style.display = show ? 'flex' : 'none';
+
+      if(show){
+        sectionHasVisibleItems = true;
+        visibleCount++;
+      }
+
+    });
+
+    section.style.display =
+      sectionHasVisibleItems ? 'block' : 'none';
+
+  });
+
+  document.getElementById('no-results').style.display =
+    visibleCount === 0 ? 'block' : 'none';
+}
+
+filterItems();
+
+</script>
+
+</body>
+</html>
